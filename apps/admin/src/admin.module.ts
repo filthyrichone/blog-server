@@ -5,12 +5,16 @@ import { AdminService } from './admin.service';
 import { UsersModule } from './users/users.module';
 import { ArticleController } from './article/article.controller';
 import { ArticleModule } from './article/article.module';
+import { CategoryModule } from './category/category.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
     DbModule,
     UsersModule,
     ArticleModule,
+    CategoryModule,
+    TagModule,
   ],
   controllers: [AdminController, ArticleController],
   providers: [AdminService],

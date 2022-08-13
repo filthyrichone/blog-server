@@ -59,7 +59,7 @@ export class AppModule implements NestModule {
       .exclude(
         '/imgs(.*)',
         '/web/article(.*)',
-        { path: 'web/upload(.*)',method: RequestMethod.POST },
+        // { path: 'web/upload(.*)',method: RequestMethod.POST },
         { path: 'web/comment(.*)',method: RequestMethod.GET },
         { path: 'web/reply(.*)', method: RequestMethod.GET },
       )

@@ -3,13 +3,15 @@ import { ConfigModule } from '@nestjs/config';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { DbService } from './db.service';
 import { Article } from './models/article.model';
+import { Category } from './models/category.model';
 import { Comments } from './models/comments.model';
 import { Like } from './models/likes.model';
 import { LoginInfo } from './models/loginInfo.model';
 import { Reply } from './models/reply.model';
+import { Tag } from './models/tag.model';
 import { User } from './models/users.model';
 
-const models = TypegooseModule.forFeature([User, Article, Comments, Reply, LoginInfo, Like]);
+const models = TypegooseModule.forFeature([User, Article, Comments, Reply, LoginInfo, Like, Category, Tag]);
 
 @Global()
 @Module({

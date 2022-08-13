@@ -62,18 +62,24 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(@Req() res) {
+  async logout(@Req() req, @Res() res) {
     try {
-      const token = res.cookies['token'];
+      const token = req.cookies['token'];
       let temp = await this.cacheManager.get('token');
       if (!temp || !(temp as string).includes(token)) {
         temp = temp ? temp + ';' + token : token ;
         await this.cacheManager.set('token', temp);
       }
-      return { status: 200, msg: 'logout sucess' };
+      res.cookie('token', '', {
+        domain: '.hyong1232.com',
+        path: '/',
+        expires: new Date(),
+        'same-site': 'None',
+    })
+      res.send({ status: 200, msg: 'logout sucess' });
     } catch (error) {
       console.error(error);
-      return { status: 500, msg: 'logout error', reason: error };
+      res.send({ status: 500, msg: 'logout error', reason: error });
     }
   }
 

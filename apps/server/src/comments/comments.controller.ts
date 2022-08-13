@@ -31,6 +31,8 @@ export class CommentsController {
     }
     console.log(user._id);
 
+    const count = await this.model.find().where('articleId').equals(id).count().exec();
+
     const res = await this.model
       .find()
       .where('articleId')
@@ -58,6 +60,6 @@ export class CommentsController {
       .limit(20)
       .sort(sortCondition)
       .exec();
-    return res;
+    return {data: res, count};
   }
 }

@@ -10,9 +10,10 @@ async function bootstrap() {
   .setDescription('the blog\'s api doc')
   .setVersion('1.0.0')
   .build();
+  app.setGlobalPrefix('admin')
   const doc = SwaggerModule.createDocument(app, conf);
-  SwaggerModule.setup('api', app, doc);
-  await app.listen(8080);
-  console.log('server is listening at http://localhost:8080/api')
+  SwaggerModule.setup('admin', app, doc);
+  await app.listen(8086);
+  console.log('server is listening at http://localhost:8086/admin')
 }
 bootstrap();
